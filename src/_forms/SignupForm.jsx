@@ -3,10 +3,10 @@ import SideImage from "./SideImage";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import google from "../../public/assets/icons/google.svg";
-import github from "../../public/assets/icons/github.svg";
-import facebook from "../../public/assets/icons/facebook.svg";
-import microsoft from "../../public/assets/icons/microsoft.png";
+import google from "/public/assets/icons/google.svg";
+import github from "/public/assets/icons/github.svg";
+import facebook from "/public/assets/icons/facebook.svg";
+import microsoft from "/public/assets/icons/microsoft.png";
 const SignupForm = () => {
   const [isHide, setIsHide] = useState(false);
   const {
