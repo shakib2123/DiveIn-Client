@@ -1,14 +1,17 @@
+"use client";
 import { useForm } from "react-hook-form";
-import SideImage from "./SideImage";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+
 import google from "/public/assets/icons/google.svg";
-import github from "/public/assets/icons/github.svg";
-import facebook from "/public/assets/icons/facebook.svg";
-import microsoft from "/public/assets/icons/microsoft.png";
+import github from "/public/assets/icons/github-circle.png";
+import Image from "next/image";
+import SideImage from "@/components/SideImage";
+import Link from "next/link";
+
 const SigninForm = () => {
   const [isHide, setIsHide] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -64,7 +67,9 @@ const SigninForm = () => {
             />
             <p
               onClick={() => setIsHide(!isHide)}
-              className="absolute top-[60%] right-3 cursor-pointer text-lg"
+              className={`absolute  ${
+                errors.password ? "top-[45%]" : "top-[60%]"
+              } right-3 cursor-pointer text-lg`}
             >
               {isHide ? <FaEyeSlash /> : <FaEye />}
             </p>
@@ -78,9 +83,12 @@ const SigninForm = () => {
           </button>
         </form>
         <p className="my-6 text-left text-sm">
-          New to DiveIn
-          <Link to="/signup" className="underline ml-1">
-            Sign up 
+          New to DiveIn?
+          <Link
+            href="/sign-up"
+            className="hover:underline ml-1 text-primary-500 font-semibold hover:text-primary-600"
+          >
+            Sign up
           </Link>
         </p>
         <div className="flex items-center justify-center w-full max-w-64 lg:max-w-sm  mx-auto">
@@ -88,26 +96,17 @@ const SigninForm = () => {
           <div className="mx-4 text-gray-200">OR</div>
           <div className="h-px bg-gray-300 w-full"></div>
         </div>
-        <div className="grid grid-cols-2 gap-3 lg:gap-5 mt-8 text-gray-800 text-sm lg:text-2xl font-bold max-w-xs px-4 lg:px-0  lg:max-w-[445px]  w-full">
+        <div className="flex gap-8 lg:gap-14 mt-8 text-light-2 text-sm lg:text-2xl font-semibold max-w-xs px-4 lg:px-0  lg:max-w-[440px]  w-full">
           {/* google */}
-          <div className="border p-1 rounded-lg bg-light-2 flex gap-2 items-center cursor-pointer w-full">
-            <img src={google} alt="google" className="w-6 lg:w-8" />
+          <div className="border border-gray-800 p-1 rounded-lg bg-dark-4 flex gap-2 items-center justify-center cursor-pointer w-full">
+            <Image src={google} alt="google" className="w-6 lg:w-8" />
             <p>Google</p>
           </div>
-          {/* microsoft */}
-          <div className="border p-1 rounded-lg bg-light-2 flex gap-1  items-center cursor-pointer">
-            <img src={microsoft} alt="microsoft" className="w-6 lg:w-8" />
-            <p>Microsoft</p>
-          </div>
+
           {/* github */}
-          <div className="border p-1 rounded-lg bg-light-2 flex gap-1 items-center cursor-pointer">
-            <img src={github} alt="github" className="w-6 lg:w-8" />
+          <div className="border border-gray-800 p-1 rounded-lg bg-dark-4 flex gap-2 items-center justify-center cursor-pointer w-full">
+            <Image  src={github} alt="github" className="w-6 lg:w-8" />
             <p>Github</p>
-          </div>
-          {/* facebook */}
-          <div className="border p-1 rounded-lg bg-light-2 flex gap-1 items-center  cursor-pointer">
-            <img src={facebook} alt="facebook" className="w-6 lg:w-8" />
-            <p>Facebook</p>
           </div>
         </div>
       </div>
